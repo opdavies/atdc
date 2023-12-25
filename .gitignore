@@ -47,3 +47,4 @@
 
 /.editorconfig
 /.gitattributes
+/.phpunit.result.cache
