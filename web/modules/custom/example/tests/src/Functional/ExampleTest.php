@@ -23,4 +23,17 @@ class ExampleTest extends BrowserTestBase {
     $assert->statusCodeEquals(Response::HTTP_FORBIDDEN);
   }
 
+  public function testAdminPageLoggedIn(): void {
+    $user = $this->createUser(permissions: [
+      'access administration pages',
+      'administer site configuration',
+    ]);
+
+    $this->drupalLogin($user);
+
+    $this->drupalGet('/admin');
+
+    $this->assertSession()->statusCodeEquals(Response::HTTP_OK);
+  }
+
 }
