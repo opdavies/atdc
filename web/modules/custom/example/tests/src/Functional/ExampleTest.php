@@ -38,11 +38,11 @@ class ExampleTest extends BrowserTestBase {
     $this->assertSession()->statusCodeEquals(Response::HTTP_OK);
   }
 
- public function testContent(): void {
+  public function testContent(): void {
     $this->drupalGet('/node/1');
     $this->assertSession()->statusCodeEquals(Response::HTTP_NOT_FOUND);
 
-    $this->createContentType(['type' =>'page']);
+    $this->createContentType(['type' => 'page']);
     $this->createNode(['type' => 'page']);
 
     // var_dump($this->getSession()->getPage()->getContent());
