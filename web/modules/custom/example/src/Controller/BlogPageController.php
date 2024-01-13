@@ -3,12 +3,18 @@
 namespace Drupal\example\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\example\Repository\PostNodeRepository;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class BlogPageController extends ControllerBase {
 
+  public function __construct(
+    private PostNodeRepository $postNodeRepository,
+  ) {
+  }
+
   public function __invoke(): array {
-    $nodeStorage = $this->entityTypeManager()->getStorage('node');
-    $nodes = $nodeStorage->loadMultiple();
+    $nodes = $this->postNodeRepository->findAll();
 
     $build = [];
     $build['content']['#theme'] = 'item_list';
@@ -17,6 +23,12 @@ class BlogPageController extends ControllerBase {
     }
 
     return $build;
+  }
+
+  public static function create(ContainerInterface $container): self {
+    return new self(
+      $container->get(PostNodeRepository::class),
+    );
   }
 
 }
