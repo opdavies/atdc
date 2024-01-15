@@ -1,0 +1,43 @@
+<?php
+
+namespace Drupal\example\Builder;
+
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
+
+final class PostBuilder {
+
+  private ?DrupalDateTime $created;
+
+  private string $title;
+
+  public static function create(): self {
+    return new self();
+  }
+
+  public function setCreatedDate(string $time = 'now') {
+    $this->created = new DrupalDateTime($time);
+
+    return $this;
+  }
+
+  public function setTitle(string $title) {
+    $this->title = $title;
+
+    return $this;
+  }
+
+  public function getPost(): NodeInterface {
+    $post = Node::create([
+      'created' => $this?->created->getTimestamp(),
+      'title' => $this->title,
+      'type' => 'post',
+    ]);
+
+    $post->save();
+
+    return $post;
+  }
+
+}

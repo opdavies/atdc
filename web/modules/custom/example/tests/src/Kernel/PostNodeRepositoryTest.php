@@ -2,37 +2,31 @@
 
 namespace Drupal\Tests\example\Kernel;
 
-use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\example\Builder\PostBuilder;
 use Drupal\example\Repository\PostNodeRepository;
 use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
 use Drupal\node\NodeInterface;
-use Drupal\Tests\node\Traits\NodeCreationTrait;
 
 class PostNodeRepositoryTest extends EntityKernelTestBase {
-
-  use NodeCreationTrait;
 
   protected static $modules = ['node', 'example'];
 
   public function testPostsAreReturnedByCreatedDate(): void {
     // Arrange.
-    $this->createNode([
-      'title' => 'Post one',
-      'created' => (new DrupalDateTime('-1 week'))->getTimestamp(),
-      'type' => 'post',
-    ]);
+    PostBuilder::create()
+      ->setCreatedDate('-1 week')
+      ->setTitle('Post one')
+      ->getPost();
 
-    $this->createNode([
-      'title' => 'Post two',
-      'created' => (new DrupalDateTime('-8 days'))->getTimestamp(),
-      'type' => 'post',
-    ]);
+    PostBuilder::create()
+      ->setCreatedDate('-8 days')
+      ->setTitle('Post two')
+      ->getPost();
 
-    $this->createNode([
-      'title' => 'Post three',
-      'created' => (new DrupalDateTime('yesterday'))->getTimestamp(),
-      'type' => 'post',
-    ]);
+    PostBuilder::create()
+      ->setCreatedDate('yesterday')
+      ->setTitle('Post three')
+      ->getPost();
 
     // Act.
     $postRepository = $this->container->get(PostNodeRepository::class);
