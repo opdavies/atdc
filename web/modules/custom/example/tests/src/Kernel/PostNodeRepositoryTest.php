@@ -7,6 +7,9 @@ use Drupal\example\Repository\PostNodeRepository;
 use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
 use Drupal\node\NodeInterface;
 
+/**
+ * @group lessons
+ */
 class PostNodeRepositoryTest extends EntityKernelTestBase {
 
   protected static $modules = ['node', 'example'];

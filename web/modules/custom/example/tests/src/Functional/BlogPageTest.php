@@ -5,6 +5,9 @@ namespace Drupal\Tests\example\Functional;
 use Drupal\Tests\BrowserTestBase;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * @group lessons
+ */
 class BlogPageTest extends BrowserTestBase {
 
   protected $defaultTheme = 'stark';
