@@ -36,8 +36,22 @@ class PostNodeRepositoryTest extends EntityKernelTestBase {
     // Assert.
     self::assertCount(3, $nodes);
 
-    self::assertSame(
+    self::assertNodeTitlesAreSame(
       ['Post two', 'Post one', 'Post three'],
+      $nodes,
+    );
+  }
+
+  /**
+   * @param array<int, string> $expectedTitles
+   * @param array<int, NodeInterface> $nodes
+   */
+  private static function assertNodeTitlesAreSame(
+    array $expectedTitles,
+    array $nodes,
+  ): void {
+    self::assertSame(
+      $expectedTitles,
       array_map(
         fn (NodeInterface $node) => $node->label(),
         $nodes
