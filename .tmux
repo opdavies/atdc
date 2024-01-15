@@ -16,8 +16,8 @@ fi
 tmux new-session -d -s "${session_name}" -n vim -c "${session_path}"
 
 # 1. Main window: Vim, server, shell
-tmux split-pane -t "${session_name}:vim" -h -c "${session_path}" -p 40
 tmux send-keys -t "${session_name}:vim" "nvim" Enter
+tmux split-pane -t "${session_name}:vim" -h -c "${session_path}" -p 40
 tmux send-keys -t "${session_name}:vim.right" "php -S 0.0.0.0:9000 -t web" Enter
 tmux split-pane -t "${session_name}:vim" -c "${session_path}" -v
 tmux send-keys -t "${session_name}:vim.bottom-right" "watch-changes web/modules/custom phpunit" Enter
