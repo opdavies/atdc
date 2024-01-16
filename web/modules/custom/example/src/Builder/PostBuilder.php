@@ -8,7 +8,7 @@ use Drupal\node\NodeInterface;
 
 final class PostBuilder {
 
-  private ?DrupalDateTime $created;
+  private ?DrupalDateTime $created = NULL;
 
   private string $title;
 
