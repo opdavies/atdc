@@ -20,7 +20,7 @@ tmux send-keys -t "${session_name}:vim" "nvim" Enter
 tmux split-pane -t "${session_name}:vim" -h -c "${session_path}" -p 40
 tmux send-keys -t "${session_name}:vim.right" "php -S 0.0.0.0:9000 -t web" Enter
 tmux split-pane -t "${session_name}:vim" -c "${session_path}" -v
-tmux send-keys -t "${session_name}:vim.bottom-right" "paratest && watch-changes web/modules/custom paratest" Enter
+tmux send-keys -t "${session_name}:vim.bottom-right" "./run test && watch-changes web/modules/custom ./run test" Enter
 
 # 2. General shell use.
 tmux new-window -t "${session_name}" -c "${session_path}"
