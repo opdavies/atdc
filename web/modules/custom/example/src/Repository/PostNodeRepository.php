@@ -19,6 +19,7 @@ final class PostNodeRepository {
     $nodeStorage = $this->entityTypeManager->getStorage('node');
     $nodes = $nodeStorage->loadByProperties([
       'status' => TRUE,
+      'type' => 'post',
     ]);
 
     uasort($nodes, function (NodeInterface $a, NodeInterface $b): int {
