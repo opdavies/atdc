@@ -16,6 +16,10 @@ final class PostBuilder {
     return new self();
   }
 
+  public function isNotPublished(): self {
+    return $this;
+  }
+
   public function isPublished(): self {
     return $this;
   }
