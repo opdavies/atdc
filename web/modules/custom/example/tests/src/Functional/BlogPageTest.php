@@ -58,4 +58,21 @@ class BlogPageTest extends BrowserTestBase {
     $assert->pageTextContains('Post three');
   }
 
+  public function testOnlyPostNodesAreShown(): void {
+    PostBuilder::create()->setTitle('Post one')->getPost();
+    PostBuilder::create()->setTitle('Post two')->getPost();
+
+    $this->createNode([
+      'title' => 'This is not a post',
+      'type' => 'page',
+    ]);
+
+    $this->drupalGet('/blog');
+
+    $assert = $this->assertSession();
+    $assert->pageTextContains('Post one');
+    $assert->pageTextContains('Post two');
+    $assert->pageTextNotContains('This is not a post');
+  }
+
 }
