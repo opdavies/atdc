@@ -16,6 +16,10 @@ final class PostBuilder {
     return new self();
   }
 
+  public function isPublished(): self {
+    return $this;
+  }
+
   public function setCreatedDate(string $time = 'now'): self {
     $this->created = new DrupalDateTime($time);
 
