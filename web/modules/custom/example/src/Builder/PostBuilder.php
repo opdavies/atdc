@@ -12,15 +12,21 @@ final class PostBuilder {
 
   private string $title;
 
+  private bool $isPublished = TRUE;
+
   public static function create(): self {
     return new self();
   }
 
   public function isNotPublished(): self {
+    $this->isPublished = FALSE;
+
     return $this;
   }
 
   public function isPublished(): self {
+    $this->isPublished = TRUE;
+
     return $this;
   }
 
@@ -38,6 +44,7 @@ final class PostBuilder {
 
   public function getPost(): NodeInterface {
     $post = Node::create([
+      'status' => $this->isPublished,
       'title' => $this->title,
       'type' => 'post',
     ]);
