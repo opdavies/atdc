@@ -34,10 +34,13 @@ final class PostBuilder {
 
   public function getPost(): NodeInterface {
     $post = Node::create([
-      'created' => $this?->created->getTimestamp(),
       'title' => $this->title,
       'type' => 'post',
     ]);
+
+    if ($this->created !== NULL) {
+      $post->setCreatedTime($this->created->getTimestamp());
+    }
 
     $post->save();
 
