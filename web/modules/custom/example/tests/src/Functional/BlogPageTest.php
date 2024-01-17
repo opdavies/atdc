@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\example\Functional;
 
+use Drupal\example\Builder\PostBuilder;
 use Drupal\Tests\BrowserTestBase;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -31,6 +32,30 @@ class BlogPageTest extends BrowserTestBase {
     $assert->pageTextContains('First post');
     $assert->pageTextContains('Second post');
     $assert->pageTextContains('Third post');
+  }
+
+  public function testOnlyPublishedNodesAreShown(): void {
+    PostBuilder::create()
+      ->setTitle('Post one')
+      ->isPublished()
+      ->getPost();
+
+    PostBuilder::create()
+      ->setTitle('Post two')
+      ->isNotPublished()
+      ->getPost();
+
+    PostBuilder::create()
+      ->setTitle('Post three')
+      ->isPublished()
+      ->getPost();
+
+    $this->drupalGet('/blog');
+
+    $assert = $this->assertSession();
+    $assert->pageTextContains('Post one');
+    $assert->pageTextNotContains('Post two');
+    $assert->pageTextContains('Post three');
   }
 
 }
