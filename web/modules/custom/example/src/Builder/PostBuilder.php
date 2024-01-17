@@ -16,13 +16,13 @@ final class PostBuilder {
     return new self();
   }
 
-  public function setCreatedDate(string $time = 'now') {
+  public function setCreatedDate(string $time = 'now'): self {
     $this->created = new DrupalDateTime($time);
 
     return $this;
   }
 
-  public function setTitle(string $title) {
+  public function setTitle(string $title): self {
     $this->title = $title;
 
     return $this;
