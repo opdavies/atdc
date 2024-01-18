@@ -56,7 +56,9 @@ final class PostBuilderTest extends EntityKernelTestBase {
 
     self::assertInstanceOf(NodeInterface::class, $node);
     self::assertSame('post', $node->bundle());
-    $node->get('field_tags');
+
+    $tags = $node->get('field_tags')->referencedEntities();
+    self::assertCount(3, $tags);
   }
 
 }
