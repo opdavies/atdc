@@ -1,0 +1,6 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Drupal\\\\example\\\\Controller\\\\BlogPageController\\:\\:create\\(\\) should return static\\(Drupal\\\\example\\\\Controller\\\\BlogPageController\\) but returns Drupal\\\\example\\\\Controller\\\\BlogPageController\\.$#"
+			count: 1
+			path: web/modules/custom/example/src/Controller/BlogPageController.php
