@@ -14,6 +14,11 @@ final class PostBuilder {
 
   private bool $isPublished = TRUE;
 
+  /**
+   * @var string[]
+   */
+  private array $tags = [];
+
   public static function create(): self {
     return new self();
   }
@@ -36,6 +41,15 @@ final class PostBuilder {
     return $this;
   }
 
+  /**
+   * @param string[] $tags
+   */
+  public function setTags(array $tags): self {
+    $this->tags = $tags;
+
+    return $this;
+  }
+
   public function setTitle(string $title): self {
     $this->title = $title;
 
@@ -53,6 +67,19 @@ final class PostBuilder {
       $post->setCreatedTime($this->created->getTimestamp());
     }
 
+    $tagTerms = [];
+    if ($this->tags !== []) {
+      foreach ($this->tags as $tag) {
+        $term = Term::create([
+          'name' => $tag,
+          'vid' => 'tags',
+        ]);
+
+        $term->save();
+
+        $tagTerms[] = $term;
+      }
+    }
     $post->save();
 
     return $post;
