@@ -5,6 +5,7 @@ namespace Drupal\Tests\example\Kernel\Builder;
 use Drupal\example\Builder\PostBuilder;
 use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
 use Drupal\node\NodeInterface;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * @group lessons
@@ -60,8 +61,13 @@ final class PostBuilderTest extends EntityKernelTestBase {
     self::assertInstanceOf(NodeInterface::class, $node);
     self::assertSame('post', $node->bundle());
 
+    /** @var Term[] */
     $tags = $node->get('field_tags')->referencedEntities();
     self::assertCount(3, $tags);
+
+    self::assertSame('Drupal', $tags[0]->label());
+    self::assertSame('PHP', $tags[1]->label());
+    self::assertSame('Testing', $tags[2]->label());
   }
 
 }
