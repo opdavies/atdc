@@ -11,7 +11,10 @@ use Drupal\node\NodeInterface;
  */
 final class PostBuilderTest extends EntityKernelTestBase {
 
-  protected static $modules = ['node'];
+  protected static $modules = [
+    'node',
+    'example_test',
+  ];
 
   /** @test */
   public function it_returns_a_published_post(): void {
