@@ -64,6 +64,10 @@ final class PostBuilderTest extends EntityKernelTestBase {
     /** @var Term[] */
     $tags = $node->get('field_tags')->referencedEntities();
     self::assertCount(3, $tags);
+    self::assertContainsOnlyInstancesOf(TermInterface::class, $tags);
+    foreach ($tags as $tag) {
+      self::assertSame('tags', $tag->bundle());
+    }
 
     self::assertSame('Drupal', $tags[0]->label());
     self::assertSame('PHP', $tags[1]->label());
