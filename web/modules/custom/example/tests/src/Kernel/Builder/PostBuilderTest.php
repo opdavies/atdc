@@ -6,6 +6,7 @@ use Drupal\example\Builder\PostBuilder;
 use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
 use Drupal\node\NodeInterface;
 use Drupal\taxonomy\Entity\Term;
+use Drupal\taxonomy\TermInterface;
 
 /**
  * @group lessons
@@ -65,13 +66,21 @@ final class PostBuilderTest extends EntityKernelTestBase {
     $tags = $node->get('field_tags')->referencedEntities();
     self::assertCount(3, $tags);
     self::assertContainsOnlyInstancesOf(TermInterface::class, $tags);
-    foreach ($tags as $tag) {
-      self::assertSame('tags', $tag->bundle());
-    }
+    self::assertAllTermsHaveBundle('tags', $tags);
 
     self::assertSame('Drupal', $tags[0]->label());
     self::assertSame('PHP', $tags[1]->label());
     self::assertSame('Testing', $tags[2]->label());
+  }
+
+  /**
+   * @param string $bundle
+   * @param TermInterface[] $items
+   */
+  private static function assertAllTermsHaveBundle(string $bundle, array $items): void {
+    foreach ($items as $item) {
+      self::assertSame($bundle, $item->bundle());
+    }
   }
 
 }
