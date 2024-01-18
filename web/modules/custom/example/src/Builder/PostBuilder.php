@@ -5,6 +5,7 @@ namespace Drupal\example\Builder;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
+use Drupal\taxonomy\Entity\Term;
 
 final class PostBuilder {
 
@@ -79,7 +80,10 @@ final class PostBuilder {
 
         $tagTerms[] = $term;
       }
+
+      $post->set('field_tags', $tagTerms);
     }
+
     $post->save();
 
     return $post;
