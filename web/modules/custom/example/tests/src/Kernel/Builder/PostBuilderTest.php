@@ -12,7 +12,11 @@ use Drupal\node\NodeInterface;
 final class PostBuilderTest extends EntityKernelTestBase {
 
   protected static $modules = [
+    // Core.
     'node',
+    'taxonomy',
+
+    // Custom.
     'example_test',
   ];
 
