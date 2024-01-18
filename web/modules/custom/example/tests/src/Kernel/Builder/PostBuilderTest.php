@@ -42,6 +42,10 @@ final class PostBuilderTest extends EntityKernelTestBase {
 
   /** @test */
   public function it_returns_a_post_with_tags(): void {
+    $this->installConfig(modules: [
+      'example_test',
+    ]);
+
     $node = PostBuilder::create()
       ->setTitle('test')
       ->getPost();
