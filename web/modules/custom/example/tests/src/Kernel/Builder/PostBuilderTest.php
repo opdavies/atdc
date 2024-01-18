@@ -25,4 +25,16 @@ final class PostBuilderTest extends EntityKernelTestBase {
     self::assertTrue($node->isPublished());
   }
 
+  /** @test */
+  public function it_returns_an_unpublished_post(): void {
+    $node = PostBuilder::create()
+      ->setTitle('test')
+      ->isNotPublished()
+      ->getPost();
+
+    self::assertInstanceOf(NodeInterface::class, $node);
+    self::assertSame('post', $node->bundle());
+    self::assertFalse($node->isPublished());
+  }
+
 }
