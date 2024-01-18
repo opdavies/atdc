@@ -46,6 +46,8 @@ final class PostBuilderTest extends EntityKernelTestBase {
 
   /** @test */
   public function it_returns_a_post_with_tags(): void {
+    $this->installEntitySchema(entity_type_id: 'taxonomy_term');
+
     $this->installConfig(modules: [
       'example_test',
     ]);
