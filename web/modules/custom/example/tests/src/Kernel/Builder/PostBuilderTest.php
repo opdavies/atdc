@@ -52,6 +52,7 @@ final class PostBuilderTest extends EntityKernelTestBase {
 
     $node = PostBuilder::create()
       ->setTitle('test')
+      ->setTags(['Drupal', 'PHP', 'Testing'])
       ->getPost();
 
     self::assertInstanceOf(NodeInterface::class, $node);
