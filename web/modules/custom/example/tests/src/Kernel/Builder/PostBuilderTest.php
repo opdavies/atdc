@@ -37,4 +37,15 @@ final class PostBuilderTest extends EntityKernelTestBase {
     self::assertFalse($node->isPublished());
   }
 
+  /** @test */
+  public function it_returns_a_post_with_tags(): void {
+    $node = PostBuilder::create()
+      ->setTitle('test')
+      ->getPost();
+
+    self::assertInstanceOf(NodeInterface::class, $node);
+    self::assertSame('post', $node->bundle());
+    $node->get('field_tags');
+  }
+
 }
