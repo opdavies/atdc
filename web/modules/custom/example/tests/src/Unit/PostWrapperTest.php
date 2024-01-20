@@ -24,4 +24,17 @@ final class PostWrapperTest extends UnitTestCase {
     self::assertSame('post', $wrapper->getType());
   }
 
+  /**
+   * @test
+   * @testdox It can't wrap a page
+   */
+  public function it_cant_wrap_a_page(): void {
+    self::expectException(\InvalidArgumentException::class);
+
+    $node = $this->createMock(NodeInterface::class);
+    $node->method('bundle')->willReturn('page');
+
+    new PostWrapper($node);
+  }
+
 }
