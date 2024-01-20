@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\example\Unit;
 
+use Drupal\example\PostWrapper;
 use Drupal\node\NodeInterface;
 use Drupal\Tests\UnitTestCase;
 
@@ -15,8 +16,12 @@ final class PostWrapperTest extends UnitTestCase {
     $node = $this->createMock(NodeInterface::class);
     $node->method('bundle')->willReturn('post');
 
+    $wrapper = new PostWrapper($node);
+
     self::assertInstanceOf(NodeInterface::class, $node);
     self::assertSame('post', $node->bundle());
+
+    self::assertSame('post', $wrapper->getType());
   }
 
 }
