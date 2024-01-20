@@ -15,6 +15,7 @@ final class PostWrapperTest extends UnitTestCase {
     $node = $this->createMock(NodeInterface::class);
 
     self::assertInstanceOf(NodeInterface::class, $node);
+    self::assertSame('post', $node->bundle());
   }
 
 }
