@@ -30,10 +30,6 @@ final class PostNodeRepositoryUnitTest extends UnitTestCase {
     $node3->method('getCreatedTime')->willReturn(strtotime('yesterday'));
     $node3->method('label')->willReturn('Post three');
 
-    $node4 = $this->createMock(NodeInterface::class);
-    $node4->method('bundle')->willReturn('page');
-    $node4->method('label')->willReturn('Not a post');
-
     $nodeStorage = $this->createMock(EntityStorageInterface::class);
     $nodeStorage->method('loadByProperties')->willReturn([$node1, $node2, $node3]);
 
@@ -56,7 +52,6 @@ final class PostNodeRepositoryUnitTest extends UnitTestCase {
       ['Post two', 'Post one', 'Post three'],
       $titles,
     );
-    self::assertNotContains('Not a page', $titles);
   }
 
 }
