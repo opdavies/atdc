@@ -16,6 +16,8 @@ final class PostNodeRepositoryUnitTest extends UnitTestCase {
     $repository = new PostNodeRepository(
       $this->createMock(EntityTypeManagerInterface::class),
     );
+
+    $repository->findAll();
   }
 
 }
