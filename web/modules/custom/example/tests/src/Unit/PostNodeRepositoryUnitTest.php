@@ -13,9 +13,12 @@ final class PostNodeRepositoryUnitTest extends UnitTestCase {
 
   /** @test */
   public function it_returns_posts(): void {
-    $repository = new PostNodeRepository(
-      $this->createMock(EntityTypeManagerInterface::class),
-    );
+    $nodeStorage = $this->createMock(EntityStorageInterface::class);
+
+    $entityTypeManager = $this->createMock(EntityTypeManagerInterface::class);
+    $entityTypeManager->method('getStorage')->with('node')->willReturn($nodeStorage);
+
+    $repository = new PostNodeRepository($entityTypeManager);
 
     $repository->findAll();
   }
