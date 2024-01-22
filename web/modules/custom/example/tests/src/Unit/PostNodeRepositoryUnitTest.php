@@ -12,7 +12,9 @@ final class PostNodeRepositoryUnitTest extends UnitTestCase {
 
   /** @test */
   public function it_returns_posts(): void {
-    $repository = new PostNodeRepository();
+    $repository = new PostNodeRepository(
+      new EntityTypeManager(),
+    );
   }
 
 }
