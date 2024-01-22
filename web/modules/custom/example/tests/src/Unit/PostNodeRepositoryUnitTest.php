@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\example\Unit;
 
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\example\Repository\PostNodeRepository;
 use Drupal\Tests\UnitTestCase;
 
@@ -13,7 +14,7 @@ final class PostNodeRepositoryUnitTest extends UnitTestCase {
   /** @test */
   public function it_returns_posts(): void {
     $repository = new PostNodeRepository(
-      new EntityTypeManager(),
+      $this->createMock(EntityTypeManagerInterface::class),
     );
   }
 
