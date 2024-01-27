@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\example\Controller;
+namespace Drupal\atdc\Controller;
 
+use Drupal\atdc\Repository\PostNodeRepository;
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\example\Repository\PostNodeRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class BlogPageController extends ControllerBase {

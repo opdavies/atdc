@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\example;
+namespace Drupal\atdc;
 
 use Drupal\node\NodeInterface;
 

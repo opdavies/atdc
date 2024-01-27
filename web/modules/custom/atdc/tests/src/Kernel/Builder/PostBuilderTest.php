@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\Tests\example\Kernel\Builder;
+namespace Drupal\Tests\atdc\Kernel\Builder;
 
-use Drupal\example\Builder\PostBuilder;
+use Drupal\atdc\Builder\PostBuilder;
 use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
 use Drupal\node\NodeInterface;
 use Drupal\taxonomy\Entity\Term;
@@ -19,7 +19,7 @@ final class PostBuilderTest extends EntityKernelTestBase {
     'taxonomy',
 
     // Custom.
-    'example_test',
+    'atdc_test',
   ];
 
   /** @test */
@@ -51,7 +51,7 @@ final class PostBuilderTest extends EntityKernelTestBase {
     $this->installEntitySchema(entity_type_id: 'taxonomy_term');
 
     $this->installConfig(modules: [
-      'example_test',
+      'atdc_test',
     ]);
 
     $node = PostBuilder::create()

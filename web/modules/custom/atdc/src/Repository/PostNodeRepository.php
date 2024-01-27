@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\example\Repository;
+namespace Drupal\atdc\Repository;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\node\NodeInterface;

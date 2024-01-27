@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\example\Functional;
+namespace Drupal\Tests\atdc\Functional;
 
 use Drupal\Tests\BrowserTestBase;
 use Symfony\Component\HttpFoundation\Response;

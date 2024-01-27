@@ -1,10 +1,10 @@
 <?php
 
-namespace Drupal\Tests\example\Unit;
+namespace Drupal\Tests\atdc\Unit;
 
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\example\Repository\PostNodeRepository;
+use Drupal\atdc\Repository\PostNodeRepository;
 use Drupal\node\NodeInterface;
 use Drupal\Tests\UnitTestCase;
 

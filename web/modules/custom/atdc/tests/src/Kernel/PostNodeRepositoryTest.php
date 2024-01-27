@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\Tests\example\Kernel;
+namespace Drupal\Tests\atdc\Kernel;
 
-use Drupal\example\Builder\PostBuilder;
-use Drupal\example\Repository\PostNodeRepository;
+use Drupal\atdc\Builder\PostBuilder;
+use Drupal\atdc\Repository\PostNodeRepository;
 use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
 use Drupal\node\NodeInterface;
 
@@ -12,7 +12,7 @@ use Drupal\node\NodeInterface;
  */
 class PostNodeRepositoryTest extends EntityKernelTestBase {
 
-  protected static $modules = ['node', 'example'];
+  protected static $modules = ['node', 'atdc'];
 
   public function testPostsAreReturnedByCreatedDate(): void {
     // Arrange.

@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\Tests\example\Functional;
+namespace Drupal\Tests\atdc\Functional;
 
-use Drupal\example\Builder\PostBuilder;
+use Drupal\atdc\Builder\PostBuilder;
 use Drupal\Tests\BrowserTestBase;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -13,7 +13,7 @@ class BlogPageTest extends BrowserTestBase {
 
   protected $defaultTheme = 'stark';
 
-  protected static $modules = ['node', 'example'];
+  protected static $modules = ['node', 'atdc'];
 
   public function testBlogPage(): void {
     $this->drupalGet('/blog');

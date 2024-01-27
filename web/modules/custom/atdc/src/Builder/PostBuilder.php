@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\example\Builder;
+namespace Drupal\atdc\Builder;
 
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\node\Entity\Node;
