@@ -1,0 +1,12 @@
+name: atdc
+type: drupal
+language: php
+
+flake:
+  devshell:
+    packages:
+      - php82
+      - php82Packages.composer
+
+experimental:
+  createTmuxStartupFile: true
