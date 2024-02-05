@@ -8,5 +8,10 @@ flake:
       - php82
       - php82Packages.composer
 
+git:
+  ignore:
+    - '!/_lessons/**'
+
 experimental:
   createTmuxStartupFile: true
+  createInclusiveGitIgnoreFile: true
