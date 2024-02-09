@@ -3,9 +3,22 @@
 *
 !*/
 
+!/.dockerignore
 !/.env.example
+!/.githooks/**
+!/.github/**
 !/.gitignore
+!/.hadolint.yaml
+!/Dockerfile
 !/build.yaml
+!/composer.{json,lock}
+!/docker-compose.yaml
+!/phpcs.xml.dist
+!/phpstan.neon.dist
+!/phpunit.xml.dist
+!/run
+!/run.local
+!/tools/**
 
 !/web/*/custom/**
 
