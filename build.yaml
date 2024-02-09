@@ -11,6 +11,8 @@ flake:
 git:
   ignore:
     - '!/_lessons/**'
+    - '!/phpstan.neon'
+    - '!/tests/**'
 
 experimental:
   createTmuxStartupFile: true

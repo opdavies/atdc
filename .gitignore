@@ -23,3 +23,5 @@
 !/web/*/custom/**
 
 !/_lessons/**
+!/phpstan.neon
+!/tests/**

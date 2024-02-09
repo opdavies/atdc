@@ -1,0 +1,10 @@
+parameters:
+  level: 5
+  paths:
+    - web/modules/custom
+
+services:
+  -
+    class: Tests\Architecture\ArchTest
+    tags:
+      - phpat.test

@@ -6,7 +6,7 @@ use Drupal\atdc\Repository\PostNodeRepository;
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class BlogPageController extends ControllerBase {
+final class BlogPageController extends ControllerBase {
 
   public function __construct(
     private PostNodeRepository $postNodeRepository,
