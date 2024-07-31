@@ -1,0 +1,19 @@
+---
+name: atdc
+template: drupal
+parameters:
+  flake:
+    devshell:
+      packages:
+        - php82
+        - php82Packages.composer
+
+  git:
+    ignore:
+      - '!/_lessons/**'
+      - '!/phpstan.neon'
+      - '!/tests/**'
+
+  experimental:
+    createTmuxStartupFile: true
+    createInclusiveGitIgnoreFile: true
