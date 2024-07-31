@@ -30,6 +30,14 @@ x-app: &default-app
   tty: true
 
 services:
+  web:
+    <<: [*default-proxy, *default-app]
+    build:
+      context: .
+      target: web
+    depends_on:
+      - php
+    profiles: [web]
 
   php:
     <<: [*default-app]
@@ -40,10 +48,12 @@ services:
         - "DOCKER_UID=${DOCKER_UID:-1000}"
     volumes:
       - .:/app
+    depends_on:
+      - database
     profiles: [php]
 
   database:
-    image: :
+    image: mariadb:10
     deploy:
       resources:
         limits:

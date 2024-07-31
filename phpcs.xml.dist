@@ -4,6 +4,7 @@
 <ruleset name="atdc coding standards">
   <description>PHPCS configuration file for atdc.</description>
 
+    <file>web/modules/custom</file>
   
   <arg value="np"/>
 

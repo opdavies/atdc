@@ -2,18 +2,43 @@
 name: atdc
 template: drupal
 parameters:
-  flake:
-    devshell:
-      packages:
-        - php82
-        - php82Packages.composer
+  web:
+    type: nginx
 
-  git:
-    ignore:
-      - '!/_lessons/**'
-      - '!/phpstan.neon'
-      - '!/tests/**'
+  database:
+    type: mariadb
+    version: 10
+
+  php:
+    version: 8.2-fpm-bullseye
+    phpcs:
+      paths:
+        - web/modules/custom
+      standards:
+        - Drupal
+        - DrupalPractice
+    phpstan:
+      level: max
+      paths:
+        - web/modules/custom
+
+  drupal:
+    docroot: web
+
+  docker-compose:
+    services:
+      - database
+      - php
+      - web
+
+  dockerfile:
+    stages:
+      build:
+        commands:
+          - composer validate --strict
+          - composer install
 
   experimental:
-    createTmuxStartupFile: true
-    createInclusiveGitIgnoreFile: true
+    createGitHubActionsConfiguration: true
+    runGitHooksBeforePush: true
+    useNewDatabaseCredentials: true
