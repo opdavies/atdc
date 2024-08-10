@@ -24,6 +24,8 @@ parameters:
 
   drupal:
     docroot: web
+    simpletest:
+      db: mysql://app:app@database/app#test
 
   docker-compose:
     services:
