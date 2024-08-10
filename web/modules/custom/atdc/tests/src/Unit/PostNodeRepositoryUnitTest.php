@@ -2,9 +2,9 @@
 
 namespace Drupal\Tests\atdc\Unit;
 
+use Drupal\atdc\Repository\PostNodeRepository;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\atdc\Repository\PostNodeRepository;
 use Drupal\node\NodeInterface;
 use Drupal\Tests\UnitTestCase;
 
