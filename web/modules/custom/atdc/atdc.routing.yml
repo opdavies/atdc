@@ -1,7 +1,0 @@
-atdc.blog:
-  path: /blog
-  defaults:
-    _controller: Drupal\atdc\Controller\BlogPageController
-    _title: Blog
-  requirements:
-    _permission: access content
